@@ -5,9 +5,20 @@
  */
 package ort.edu.uy.obligatorio.controlador;
 
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaMonitoreo;
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaVisualizarListaFrecuencias;
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaAprobarFrecuencia;
+import ort.edu.uy.obligatorio.interfaces.IControladorUsuario;
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresarLlegadaVuelo;
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresoFrecuencia;
+import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresarPartidaVuelo;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import ort.edu.uy.obligatorio.modelo.*;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,8 +28,8 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
         IControladorVistaIngresarPartidaVuelo, IControladorVistaIngresarLlegadaVuelo, IControladorVistaMonitoreo {
     private final ControladorUsuario controladorUsuario;
     private final ControladorVistaIngresoFrecuencia controladorVistaIngresoFrecuencia;
-    private final ControladorVistaVisualizarListaFrecuencias controladorVistaVisualizarListaFrecuencias;
     private final ControladorVistaAprobarFrecuencia controladorVistaAprobarFrecuencia;
+    private final ControladorVistaVisualizarListaFrecuencias controladorVistaVisualizarListaFrecuencias;
     private final ControladorVistaIngresarPartidaVuelo controladorVistaIngresarPartidaVuelo;
     private final ControladorVistaIngresarLlegadaVuelo controladorVistaIngresarLlegadaVuelo;
     private final ControladorVistaMonitoreo controladorVistaMonitoreo;
@@ -34,8 +45,8 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
     private ControladorSistema() {
         this.controladorUsuario = new ControladorUsuario(this);
         this.controladorVistaIngresoFrecuencia = new ControladorVistaIngresoFrecuencia(this);
-        this.controladorVistaVisualizarListaFrecuencias = new ControladorVistaVisualizarListaFrecuencias(this);
         this.controladorVistaAprobarFrecuencia = new ControladorVistaAprobarFrecuencia(this);
+        this.controladorVistaVisualizarListaFrecuencias = new ControladorVistaVisualizarListaFrecuencias(this);
         this.controladorVistaIngresarPartidaVuelo = new ControladorVistaIngresarPartidaVuelo(this);
         this.controladorVistaIngresarLlegadaVuelo = new ControladorVistaIngresarLlegadaVuelo(this);
         this.controladorVistaMonitoreo = new ControladorVistaMonitoreo(this);
@@ -345,6 +356,7 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
     @Override
     public void agregarAeropuerto(Aeropuerto aeropuerto) {
         this.controladorVistaIngresoFrecuencia.agregarAeropuerto(aeropuerto);
+        this.controladorVistaVisualizarListaFrecuencias.agregarAeropuerto(aeropuerto);
     }
     
     @Override
@@ -368,9 +380,12 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
         return this.controladorVistaIngresoFrecuencia.getAeropuertoPorCiudad(ciudad);
     }
     
+    
     @Override
-    public LocalTime convertirHora(String hora) {
-        return this.controladorVistaIngresoFrecuencia.convertirHora(hora);
+    public LocalTime convertirHora(String horaPartida) {
+        LocalTime localTime = LocalTime.parse(horaPartida,
+        DateTimeFormatter.ofPattern("HH:mm"));
+        return localTime;
     }
     
     @Override
@@ -392,7 +407,7 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
     @Override
     public Frecuencia crearFrecuencia(Aeropuerto aeropuertoOrigen, Aeropuerto aeropuertoDestino, String[] listaDiasSemana, String horaPartida, int duracionEstimada, Usuario usuario) {
         return this.controladorVistaIngresoFrecuencia.crearFrecuencia(aeropuertoOrigen, aeropuertoDestino, listaDiasSemana, horaPartida, duracionEstimada, usuario);
-    }
+    }   
         
     @Override
     public ArrayList<Frecuencia> getListaFrecuencias(String nombreCompañia) {
@@ -458,9 +473,45 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
     public ArrayList<Frecuencia> getListaLlegadas(Aeropuerto aeropuertoDestino) {
         return this.controladorVistaMonitoreo.getListaLlegadas(aeropuertoDestino);
     }
-
+        
+    @Override
+    public EstadoVuelo horarioVuelo(LocalTime timeStamp, LocalTime horaPartidaFrecuencia) {
+        EstadoVuelo estado = null;
+        long diff = Duration.between(horaPartidaFrecuencia, timeStamp).toMinutes();
+        
+        if(horaPartidaFrecuencia.equals(timeStamp) || (diff <= 5 && diff >= -5)) {
+            estado = EstadoVuelo.EnHora;
+        } 
+        else if(diff < 5) {
+            estado = EstadoVuelo.Adelantado;
+        }
+        else if(diff > -5) {
+            estado = EstadoVuelo.Retrasado;
+        }
+        return estado;
+    }
+    
+    @Override
+    public boolean diaSemanaEsActual(Frecuencia frecuencia) {
+        String diaActual = this.getDiaActual();
+        boolean bandera = false;
+        
+        for (DiaSemana d : frecuencia.getDiasSemana()) {
+            if(diaActual.equals(d.toString())) {
+                bandera = !bandera;
+            }  
+        }
+        return bandera;
+    }
+    
     @Override
     public String getDiaActual() {
-        return this.controladorVistaIngresarPartidaVuelo.getDiaActual();
+        Date fecha = new Date();
+        SimpleDateFormat simpleDateformat = new SimpleDateFormat("EEEE");
+        String dia = simpleDateformat.format(fecha);
+        
+        String d1 = dia.substring(0,1).toUpperCase();
+        String d2 = dia.substring(1, dia.length());
+        return d1 + d2;
     }
 }

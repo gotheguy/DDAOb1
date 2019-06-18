@@ -99,7 +99,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
     private void login() {
         String nombre = txtUsuario.getText();
-        char[] p = txtPassword.getPassword();
+        char[] p = txtPassword.getPassword();               
         String password = String.valueOf(p);
         
         Usuario usuario = controladorSistema.login(nombre, password);
@@ -107,13 +107,13 @@ public class VistaLogin extends javax.swing.JFrame {
         if (usuario != null) {
             if(usuario.getRol() == Rol.Compañia) {
                 controladorSistema.login(nombre, password);
-                new VistaMenuCompañia(usuario).setVisible(true);
+                new VistaMenuCompañia(usuario, this).setVisible(true);
             }
             if(usuario.getRol() == Rol.Aeropuerto) {
                 controladorSistema.login(nombre, password);
                 VistaMonitoreo vistaMonitoreo = new VistaMonitoreo(usuario);
                 vistaMonitoreo.setVisible(true);
-                new VistaMenuAeropuerto(usuario, vistaMonitoreo).setVisible(true);
+                new VistaMenuAeropuerto(usuario, vistaMonitoreo, this).setVisible(true);
             }
         } else {
             JOptionPane.showMessageDialog(this, "Login invalido");

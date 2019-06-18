@@ -5,15 +5,13 @@
  */
 package ort.edu.uy.obligatorio.modelo;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 /**
  *
  * @author gonzalo
  */
-public class Aeropuerto implements Observer {
+public class Aeropuerto extends Observable {
     private String nombre;
     private String ciudad;
     private ArrayList<Frecuencia> frecuencias = new ArrayList();
@@ -63,13 +61,8 @@ public class Aeropuerto implements Observer {
     public void agregarFrecuencia(Frecuencia frecuencia) {
         if (!frecuencias.contains(frecuencia)) {
             this.frecuencias.add(frecuencia);
-        }
-    }
-    
-    @Override
-    public void update(Observable o, Object frecuencia) {
-        for (Frecuencia f : this.frecuencias) {
-            f.actualizarFrecuencia((Frecuencia)frecuencia);
+            setChanged();
+            notifyObservers(frecuencia);
         }
     }
 }

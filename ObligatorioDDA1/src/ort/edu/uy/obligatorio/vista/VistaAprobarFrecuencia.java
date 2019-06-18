@@ -18,16 +18,19 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
     private final ControladorSistema controladorSistema;
     private Usuario usuarioLogeado = null;
     private VistaMonitoreo vistaMonitoreo = null;
+    private VistaLogin vistaLogin = null;
     /**
      * Creates new form VistaAprobarFrecuencia
      * @param usuario
      * @param vistaMonitoreo
+     * @param vistaLogin
      */
-    public VistaAprobarFrecuencia(Usuario usuario, VistaMonitoreo vistaMonitoreo) {
+    public VistaAprobarFrecuencia(Usuario usuario, VistaMonitoreo vistaMonitoreo, VistaLogin vistaLogin) {
         this.controladorSistema = ControladorSistema.getInstancia();
         initComponents();
         this.usuarioLogeado = usuario;
         this.vistaMonitoreo = vistaMonitoreo;
+        this.vistaLogin = vistaLogin;
         lblUsuarioLogeado.setText(usuario.toString());
         cargarFrecuenciasPendientesOrigen();
         cargarFrecuenciasPendientesDestino();
@@ -226,7 +229,7 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
         this.vistaMonitoreo.dispose();
-        new VistaMenuAeropuerto(this.usuarioLogeado, this.vistaMonitoreo).setVisible(true);
+        new VistaMenuAeropuerto(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnAprobarDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarDestinoActionPerformed
@@ -271,12 +274,12 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
 
     private void btnPartidaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartidaVueloActionPerformed
         dispose();
-        new VistaIngresarPartidaVuelo(this.usuarioLogeado, this.vistaMonitoreo).setVisible(true);
+        new VistaIngresarPartidaVuelo(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnPartidaVueloActionPerformed
 
     private void btnLlegadaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlegadaVueloActionPerformed
         dispose();
-        new VistaIngresarLlegadaVuelo(this.usuarioLogeado, this.vistaMonitoreo).setVisible(true);
+        new VistaIngresarLlegadaVuelo(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnLlegadaVueloActionPerformed
 
     public void cargarFrecuenciasPendientesOrigen() {

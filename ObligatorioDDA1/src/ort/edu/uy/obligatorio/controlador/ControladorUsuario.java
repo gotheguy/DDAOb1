@@ -5,6 +5,7 @@
  */
 package ort.edu.uy.obligatorio.controlador;
 
+import ort.edu.uy.obligatorio.interfaces.IControladorUsuario;
 import ort.edu.uy.obligatorio.modelo.Usuario;
 import java.util.ArrayList;
 
@@ -13,12 +14,12 @@ import java.util.ArrayList;
  * @author gonzalo
  */
 public class ControladorUsuario {
-    private final IControladorUsuario IControladorUsuario;
+    private final IControladorUsuario vista;
     private Usuario logueado;
     private final ArrayList<Usuario> listaUsuarios = new ArrayList();
     
-    public ControladorUsuario(IControladorUsuario IControladorUsuario) {
-        this.IControladorUsuario = IControladorUsuario;
+    public ControladorUsuario(IControladorUsuario vista) {
+        this.vista = vista;
     }
     
     public Usuario login(String nombre, String password) {

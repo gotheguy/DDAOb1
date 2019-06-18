@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ort.edu.uy.obligatorio.controlador;
+package ort.edu.uy.obligatorio.interfaces;
 
+import java.time.*;
 import ort.edu.uy.obligatorio.modelo.*;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -19,4 +20,8 @@ public interface IControladorVistaIngresarPartidaVuelo {
     public ArrayList<Frecuencia> getListaFrecuenciasAprobadasOrigen(Aeropuerto aeropuerto);
     
     public String getDiaActual();
+    
+    public EstadoVuelo horarioVuelo(LocalTime timeStamp, LocalTime horaPartidaFrecuencia);
+    
+    public boolean diaSemanaEsActual(Frecuencia frecuencia);
 }

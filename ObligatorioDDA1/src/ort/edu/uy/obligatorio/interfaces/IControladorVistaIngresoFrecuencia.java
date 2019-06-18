@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ort.edu.uy.obligatorio.controlador;
+package ort.edu.uy.obligatorio.interfaces;
 
 import java.time.LocalTime;
 import ort.edu.uy.obligatorio.modelo.*;

@@ -18,15 +18,18 @@ public final class VistaIngresarLlegadaVuelo extends javax.swing.JFrame {
     private final ControladorSistema controladorSistema;
     private Usuario usuarioLogeado = null;
     private VistaMonitoreo vistaMonitoreo = null;
+    private VistaLogin vistaLogin = null;
     /**
      * Creates new form VistaIngresarPartidaVuelo
      * @param usuario
      * @param vistaMonitoreo
+     * @param vistaLogin
      */
-    public VistaIngresarLlegadaVuelo(Usuario usuario, VistaMonitoreo vistaMonitoreo) {
+    public VistaIngresarLlegadaVuelo(Usuario usuario, VistaMonitoreo vistaMonitoreo, VistaLogin vistaLogin) {
         this.controladorSistema = ControladorSistema.getInstancia();
         initComponents();
         this.usuarioLogeado = usuario;
+        this.vistaLogin = vistaLogin;
         this.vistaMonitoreo = vistaMonitoreo;
         lblUsuarioLogeado.setText(usuario.toString());
         cargarFrecuenciasAprobadas();
@@ -129,7 +132,7 @@ public final class VistaIngresarLlegadaVuelo extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
-        new VistaMenuAeropuerto(this.usuarioLogeado, this.vistaMonitoreo).setVisible(true);
+        new VistaMenuAeropuerto(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     public void cargarFrecuenciasAprobadas() {

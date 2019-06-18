@@ -17,15 +17,21 @@ import javax.swing.JOptionPane;
 public final class VistaIngresoFrecuencia extends javax.swing.JFrame {
     private final ControladorSistema controladorSistema;
     private Usuario usuarioLogeado = null;
+    private VistaVisualizarListaFrecuencias vistaVisualizarListaFrecuencias = null;
+    private VistaLogin vistaLogin = null;
     /**
      * Creates new form VistaIngresoFrecuencia
      * @param usuario
+     * @param vistaVisualizarListaFrecuencias
+     * @param vistaLogin
      */
-    public VistaIngresoFrecuencia(Usuario usuario) {
+    public VistaIngresoFrecuencia(Usuario usuario, VistaVisualizarListaFrecuencias vistaVisualizarListaFrecuencias, VistaLogin vistaLogin) {
         this.controladorSistema = ControladorSistema.getInstancia();
         initComponents();
         this.usuarioLogeado = usuario;
         lblUsuarioLogeado.setText(usuario.toString());
+        this.vistaVisualizarListaFrecuencias = vistaVisualizarListaFrecuencias;
+        this.vistaLogin = vistaLogin;
         cargarAeropuertos();
         cargarDiasSemana();
     }
@@ -56,7 +62,6 @@ public final class VistaIngresoFrecuencia extends javax.swing.JFrame {
         lblIngresar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(615, 463));
         setResizable(false);
 
         lblUsuarioLogeado.setText("Nombre");
@@ -189,7 +194,7 @@ public final class VistaIngresoFrecuencia extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
-        new VistaMenuCompañia(this.usuarioLogeado).setVisible(true);
+        new VistaMenuCompañia(this.usuarioLogeado, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -201,6 +206,7 @@ public final class VistaIngresoFrecuencia extends javax.swing.JFrame {
         
         if(validarInfo(aeropuertoOrigen, aeropuertoDestino, listaDiasSemana, horaPartida, duracionEstimada)) {
             ingresarFrecuencia(aeropuertoOrigen, aeropuertoDestino, listaDiasSemana, horaPartida, duracionEstimada, this.usuarioLogeado);
+            this.vistaVisualizarListaFrecuencias.cargarFrecuencias();
             JOptionPane.showMessageDialog(this, "Frecuencia ingresada");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed

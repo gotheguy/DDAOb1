@@ -13,7 +13,7 @@ import java.util.Observable;
  *
  * @author gonzalo
  */
-public class Frecuencia extends Observable {
+public class Frecuencia {
     private static int numero = 1;
     private int numeroId;
     private Aeropuerto aeropuertoOrigen;
@@ -106,14 +106,6 @@ public class Frecuencia extends Observable {
         this.estadoAeropuertoDestino = estadoAeropuertoDestino;
     }
     
-    public void actualizarFrecuencia(Frecuencia frecuencia) {
-        this.horaPartida = frecuencia.getHoraPartida();
-        this.estadoAeropuertoOrigen = frecuencia.getEstadoAeropuertoOrigen();
-        this.estadoAeropuertoDestino = frecuencia.getEstadoAeropuertoDestino();
-        setChanged();
-        notifyObservers(frecuencia);
-    }
-    
     public Frecuencia() { }
     
     public Frecuencia(Aeropuerto aeropuertoOrigen, Aeropuerto aeropuertoDestino, ArrayList<DiaSemana> diasSemana, LocalTime horaPartida, int duracionEstimada, 
@@ -132,7 +124,7 @@ public class Frecuencia extends Observable {
     
     @Override
     public String toString() {
-        return "\nFrecuencia{" + "numero=" + numero + ", aeropuerto origen=" + aeropuertoOrigen.getNombre() + ", aeropuerto destino=" + aeropuertoDestino.getNombre() 
+        return "\nFrecuencia{" + "numero=" + numeroId + ", aeropuerto origen=" + aeropuertoOrigen.getNombre() + ", aeropuerto destino=" + aeropuertoDestino.getNombre() 
                 + "hora partida=" + horaPartida + ", duración estimada=" + duracionEstimada + ", compañia=" + compañia.getNombre()  + ", estado aeropuerto origen=" + estadoAeropuertoOrigen 
                  + ", estado aeropuerto destino=" + estadoAeropuertoDestino + '}';
     }
