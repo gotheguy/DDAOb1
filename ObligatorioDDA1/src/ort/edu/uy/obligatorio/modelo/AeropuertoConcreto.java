@@ -11,7 +11,7 @@ import java.util.*;
  *
  * @author gonzalo
  */
-public class Aeropuerto extends Observable {
+public class AeropuertoConcreto extends Observable {
     private String nombre;
     private String ciudad;
     private ArrayList<Frecuencia> frecuencias = new ArrayList();
@@ -49,9 +49,9 @@ public class Aeropuerto extends Observable {
         this.usuariosAeropuerto = usuariosAeropuerto;
     }
     
-    public Aeropuerto() { }
+    public AeropuertoConcreto() { }
     
-    public Aeropuerto(String nombre, String ciudad, ArrayList<Frecuencia> frecuencias, ArrayList<Usuario> usuariosAeropuerto) {
+    public AeropuertoConcreto(String nombre, String ciudad, ArrayList<Frecuencia> frecuencias, ArrayList<Usuario> usuariosAeropuerto) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.frecuencias = frecuencias;

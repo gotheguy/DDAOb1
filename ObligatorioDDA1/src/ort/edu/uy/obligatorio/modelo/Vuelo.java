@@ -91,7 +91,7 @@ public class Vuelo {
     
     @Override
     public String toString() {
-        return "\nVuelo{" + "numero=" + numero + ", fecha partida=" + fechaPartida + ", hora partida=" + horaPartida + ", hora partida=" + horaPartida
+        return "\nVuelo{" + "numero=" + numeroId + ", fecha partida=" + fechaPartida + ", hora partida=" + horaPartida + ", hora partida=" + horaPartida
                 + ", hora llegada=" + horaLlegada + ", compañia=" + compañia.getNombre() + ", frecuencia=" + frecuencia.getNumero() + ", estado=" + estado + '}';
     }
 }

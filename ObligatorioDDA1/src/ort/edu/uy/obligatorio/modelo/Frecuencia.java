@@ -125,7 +125,8 @@ public class Frecuencia {
     @Override
     public String toString() {
         return "\nFrecuencia{" + "numero=" + numeroId + ", aeropuerto origen=" + aeropuertoOrigen.getNombre() + ", aeropuerto destino=" + aeropuertoDestino.getNombre() 
-                + "hora partida=" + horaPartida + ", duración estimada=" + duracionEstimada + ", compañia=" + compañia.getNombre()  + ", estado aeropuerto origen=" + estadoAeropuertoOrigen 
-                 + ", estado aeropuerto destino=" + estadoAeropuertoDestino + '}';
+                + ", hora partida=" + horaPartida + ", duración estimada=" + duracionEstimada + ", dias semana=" + diasSemana
+                + ", compañia=" + compañia.getNombre() + ", vuelos=" + vuelos + ", estado aeropuerto origen=" + estadoAeropuertoOrigen 
+                + ", estado aeropuerto destino=" + estadoAeropuertoDestino + '}';
     }
 }

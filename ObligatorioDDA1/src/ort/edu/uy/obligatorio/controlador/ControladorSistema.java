@@ -5,13 +5,7 @@
  */
 package ort.edu.uy.obligatorio.controlador;
 
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaMonitoreo;
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaVisualizarListaFrecuencias;
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaAprobarFrecuencia;
-import ort.edu.uy.obligatorio.interfaces.IControladorUsuario;
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresarLlegadaVuelo;
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresoFrecuencia;
-import ort.edu.uy.obligatorio.interfaces.IControladorVistaIngresarPartidaVuelo;
+import ort.edu.uy.obligatorio.interfaces.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import ort.edu.uy.obligatorio.modelo.*;
@@ -19,6 +13,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
+import ort.edu.uy.obligatorio.modelo.*;
 
 /**
  *
@@ -96,12 +91,12 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
         Compañia c2 = new Compañia("Latam", "LAT", null, null, null);
         Compañia c3 = new Compañia("Avianca", "AVI", null, null, null);
 
-        Aeropuerto a1 = new Aeropuerto("Aeropuerto El Dorado", "Bogotá, Colombia", colaFrecuencias1, null);
-        Aeropuerto a2 = new Aeropuerto("Aeroparque Jorge Newbery", "Rio de Janeiro, Brasil", colaFrecuencias2, null);
-        Aeropuerto a3 = new Aeropuerto("Aeropuerto Ezeiza", "Ezeiza, Argentina", colaFrecuencias3, null);
-        Aeropuerto a4 = new Aeropuerto("Aeropuerto Mataveri", "Valparaiso, Chile", colaFrecuencias4, null);
-        Aeropuerto a5 = new Aeropuerto("Aeropuerto Alejandro Velasco Astete", "Cusco, Perú", colaFrecuencias5, null);
-        
+        Aeropuerto a1 = new Nacional("Aeropuerto El Dorado", "Bogotá, Colombia", colaFrecuencias1, null);
+        Aeropuerto a2 = new Nacional("Aeroparque Jorge Newbery", "Rio de Janeiro, Brasil", colaFrecuencias2, null);
+        Aeropuerto a3 = new Regional("Aeropuerto Ezeiza", "Ezeiza, Argentina", colaFrecuencias3, null);
+        Aeropuerto a4 = new Regional("Aeropuerto Mataveri", "Valparaiso, Chile", colaFrecuencias4, null);
+        Aeropuerto a5 = new Internacional("Aeropuerto Alejandro Velasco Astete", "Cusco, Perú", colaFrecuencias5, null);
+                
         Vuelo v1 = new Vuelo(DiaSemana.Jueves, null, null, c2, null, EstadoVuelo.Pendiente);
         Vuelo v2 = new Vuelo(DiaSemana.Lunes, null, null, c1, null, EstadoVuelo.Pendiente);
         Vuelo v3 = new Vuelo(DiaSemana.Martes, null, null, c1, null, EstadoVuelo.Pendiente);
@@ -226,6 +221,8 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
         Frecuencia f6 = new Frecuencia(a1, a2, dias5, this.convertirHora("20:00"), 340, c3, vuelos6, EstadoFrecuencia.Aprobada, EstadoFrecuencia.Aprobada);
         Frecuencia f7 = new Frecuencia(a5, a2, dias1, this.convertirHora("14:00"), 180, c3, vuelos7, EstadoFrecuencia.Rechazada, EstadoFrecuencia.Rechazada);
         Frecuencia f8 = new Frecuencia(a2, a3, dias5, this.convertirHora("20:00"), 340, c3, vuelos8, EstadoFrecuencia.Pendiente, EstadoFrecuencia.Pendiente);
+        
+        System.out.println(a1.getClass().getName() + " " + f1.getAeropuertoDestino().getClass().getName());
         
         frecuencias1.add(f1);
         frecuencias1.add(f2);
@@ -401,7 +398,15 @@ public class ControladorSistema implements IControladorUsuario, IControladorVist
     
     @Override
     public String getLetraDiasSemana(Frecuencia frecuencia) {
-        return this.controladorVistaVisualizarListaFrecuencias.getLetraDiasSemana(frecuencia);
+        String letrasDias = "";
+        for (DiaSemana dia : frecuencia.getDiasSemana()) {
+            if(dia.equals(DiaSemana.Miércoles)) {
+                letrasDias = letrasDias + "X";
+            } else {
+                letrasDias = letrasDias + dia.toString().substring(0, 1);
+            }
+        }
+        return letrasDias;
     }
 
     @Override
