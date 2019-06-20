@@ -32,13 +32,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="btnPartidaVuelo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnLlegadaVuelo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSalir" min="-2" pref="89" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="btnSalir" min="-2" pref="89" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lstFrecuenciasAeropuertoOrigen" alignment="0" min="-2" pref="436" max="-2" attributes="0"/>
@@ -92,11 +86,7 @@
                   </Group>
               </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnSalir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnPartidaVuelo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLlegadaVuelo" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -166,22 +156,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRechazarDestinoActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnPartidaVuelo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Partida de vuelo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPartidaVueloActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnLlegadaVuelo">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Llegada de vuelo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLlegadaVueloActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

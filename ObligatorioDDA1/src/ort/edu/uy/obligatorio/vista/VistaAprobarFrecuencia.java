@@ -55,8 +55,6 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
         lblVerFrecuenciasDestino = new javax.swing.JLabel();
         btnAprobarDestino = new javax.swing.JButton();
         btnRechazarDestino = new javax.swing.JButton();
-        btnPartidaVuelo = new javax.swing.JButton();
-        btnLlegadaVuelo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,20 +102,6 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
             }
         });
 
-        btnPartidaVuelo.setText("Partida de vuelo");
-        btnPartidaVuelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPartidaVueloActionPerformed(evt);
-            }
-        });
-
-        btnLlegadaVuelo.setText("Llegada de vuelo");
-        btnLlegadaVuelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLlegadaVueloActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,12 +113,7 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnPartidaVuelo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLlegadaVuelo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lstFrecuenciasAeropuertoOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,10 +154,7 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
                         .addComponent(btnAprobarDestino)
                         .addComponent(btnRechazarDestino)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir)
-                    .addComponent(btnPartidaVuelo)
-                    .addComponent(btnLlegadaVuelo))
+                .addComponent(btnSalir)
                 .addContainerGap())
         );
 
@@ -228,7 +204,6 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
-        this.vistaMonitoreo.dispose();
         new VistaMenuAeropuerto(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -272,16 +247,6 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRechazarDestinoActionPerformed
 
-    private void btnPartidaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartidaVueloActionPerformed
-        dispose();
-        new VistaIngresarPartidaVuelo(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
-    }//GEN-LAST:event_btnPartidaVueloActionPerformed
-
-    private void btnLlegadaVueloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlegadaVueloActionPerformed
-        dispose();
-        new VistaIngresarLlegadaVuelo(this.usuarioLogeado, this.vistaMonitoreo, this.vistaLogin).setVisible(true);
-    }//GEN-LAST:event_btnLlegadaVueloActionPerformed
-
     public void cargarFrecuenciasPendientesOrigen() {
         lstFrecuenciasAeropuertoOrigen.removeAll();
         ArrayList<Frecuencia> frecuencias = controladorSistema.getListaFrecuenciasPendientesOrigen((Aeropuerto)this.usuarioLogeado.getTrabajo());
@@ -309,8 +274,6 @@ public class VistaAprobarFrecuencia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAprobarDestino;
     private javax.swing.JButton btnAprobarOrigen;
-    private javax.swing.JButton btnLlegadaVuelo;
-    private javax.swing.JButton btnPartidaVuelo;
     private javax.swing.JButton btnRechazarDestino;
     private javax.swing.JButton btnRechazarOrigen;
     private javax.swing.JButton btnSalir;

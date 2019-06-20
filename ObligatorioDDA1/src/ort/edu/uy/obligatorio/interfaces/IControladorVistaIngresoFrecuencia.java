@@ -30,7 +30,7 @@ public interface IControladorVistaIngresoFrecuencia {
     
     public ArrayList<Object> validarFrecuencia(String aeropuertoOrigen, String aeropuertoDestino, String[] listaDiasSemana, String horaPartida, int duracionEstimada, Usuario usuario);
     
-    public Frecuencia crearFrecuencia(Aeropuerto aeropuertoOrigen, Aeropuerto aeropuertoDestino, String[] listaDiasSemana, String horaPartida, int duracionEstimada, Usuario usuario);
+    public void crearFrecuencia(Aeropuerto aeropuertoOrigen, Aeropuerto aeropuertoDestino, String[] listaDiasSemana, String horaPartida, int duracionEstimada, Usuario usuario);
         
     public LocalTime convertirHora(String horaPartida);
 }

@@ -16,6 +16,7 @@ public class AeropuertoConcreto extends Observable {
     private String ciudad;
     private ArrayList<Frecuencia> frecuencias = new ArrayList();
     private ArrayList<Usuario> usuariosAeropuerto = new ArrayList();
+    private Cobra cobra;
     
     public String getNombre() {
         return this.nombre;
@@ -48,14 +49,23 @@ public class AeropuertoConcreto extends Observable {
     public void setUsuariosAeropuerto(ArrayList<Usuario> usuariosAeropuerto) {
         this.usuariosAeropuerto = usuariosAeropuerto;
     }
+        
+    public Cobra getCobra() {
+        return this.cobra;
+    }
+    
+    public void setCobra(Cobra cobra) {
+        this.cobra = cobra;
+    }
     
     public AeropuertoConcreto() { }
     
-    public AeropuertoConcreto(String nombre, String ciudad, ArrayList<Frecuencia> frecuencias, ArrayList<Usuario> usuariosAeropuerto) {
+    public AeropuertoConcreto(String nombre, String ciudad, ArrayList<Frecuencia> frecuencias, ArrayList<Usuario> usuariosAeropuerto, Cobra cobra) {
         this.nombre = nombre;
         this.ciudad = ciudad;
         this.frecuencias = frecuencias;
         this.usuariosAeropuerto = usuariosAeropuerto;
+        this.cobra = cobra;
     }
     
     public void agregarFrecuencia(Frecuencia frecuencia) {

@@ -12,13 +12,19 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Regional.java</file>
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Aeropuerto.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/vista/VistaVisualizarListaFrecuencias.java</file>
             <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Internacional.java</file>
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Nacional.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/vista/VistaMenuAeropuerto.java</file>
             <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/controlador/ControladorVistaAprobarFrecuencia.java</file>
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/controlador/ControladorSistema.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/controlador/ControladorVistaIngresoFrecuencia.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/vista/VistaAprobarFrecuencia.java</file>
             <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/AeropuertoConcreto.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Regional.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/modelo/Nacional.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/controlador/ControladorSistema.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/interfaces/IControladorVistaIngresoFrecuencia.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/controlador/ControladorVistaVisualizarListaFrecuencias.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/DDA1/New/ObligatorioDDA1/src/ort/edu/uy/obligatorio/vista/VistaIngresoFrecuencia.java</file>
         </group>
     </open-files>
 </project-private>
